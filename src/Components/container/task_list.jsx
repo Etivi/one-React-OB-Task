@@ -20,14 +20,18 @@ const TaskListComponent = () => {
 		LEVELS.URGENT
 	);
 	const defaultTask3 = new Task(
-		"Example23",
-		"Default description23",
+		"Example3",
+		"Default description3",
 		false,
 		LEVELS.BLOCKING
 	);
 
 	// estado del componente
-	const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
+	const [tasks, setTasks] = useState([
+		defaultTask1,
+		defaultTask2,
+		defaultTask3,
+	]);
 	const [loading, setLoading] = useState(true);
 
 	// Control del ciclo de vuda del componente
@@ -39,12 +43,34 @@ const TaskListComponent = () => {
 		};
 	}, [tasks]);
 
-	const changeCompleted = (id) => {
-		console.log("TODO: Cambiar estado de una tarea");
-	};
+	function completeTask(task) {
+		console.log("Complete this Task:", Task);
+		const index = tasks.indexOf(task);
+		const tempTask = [...tasks];
+		tempTask[index].completed = !tempTask[index].completed;
+		// we update the state of the component and it will update the
+		// iteration of the tasks in order to show the tasl updated
+		setTasks(tempTask);
+	}
+
+	function removeTask(task) {
+		console.log("Delete this Task:", Task);
+		const index = tasks.indexOf(task);
+		const tempTask = [...tasks];
+		tempTask.splice(index, 1);
+		setTasks(tempTask);
+	}
+
+	function addTask(task) {
+		console.log("Delete this Task:", Task);
+		const index = tasks.indexOf(task);
+		const tempTask = [...tasks];
+		tempTask.push(task);
+		setTasks(tempTask);
+	}
 
 	return (
-		<div>
+		<div className="d-flex flex-column gap-3">
 			<div className="col-12">
 				<div className="card">
 					<div className="card-header p-3">
@@ -53,7 +79,7 @@ const TaskListComponent = () => {
 					<div
 						className="card-body"
 						data-mdb-perfect-scrollbar="true"
-						style={{ position: "relative", height: "400px" }}
+						style={{ position: "relative", height: "250px" }}
 					>
 						<table>
 							<thead>
@@ -66,13 +92,22 @@ const TaskListComponent = () => {
 							</thead>
 							<tbody>
 								{tasks.map((task, index) => {
-									return <TaskComponent key={index} task={task} />;
+									return (
+										<TaskComponent
+											key={index}
+											task={task}
+											complete={completeTask}
+											remove={removeTask}
+										/>
+									);
 								})}
 							</tbody>
 						</table>
 					</div>
-                    <TaskForm/>
 				</div>
+			</div>
+			<div>
+				<TaskForm add={addTask} />
 			</div>
 			{/* TODO: Apilcar un for/Map para rederizar una lista de tareas */}
 			{/* <TaskComponent task={defaultTask} /> */}
