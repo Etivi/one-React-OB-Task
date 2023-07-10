@@ -47,7 +47,7 @@ const ContactListComponet = () => {
 
 	function addContact(contact) {
 		console.log("Add this contact", contact);
-		const index = contacts.indexOf(contact);
+		// const index = contacts.indexOf(contact);
 		const tempContact = [...contacts];
 		tempContact.push(contact);
 		setContacts(tempContact);

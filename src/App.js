@@ -1,4 +1,7 @@
 import './App.css';
+import RegisterFormik from './Components/Pure/forms/registerFormik';
+// import LoginFormik from './Components/Pure/forms/loginFormik';
+// import OptionalRender from './Components/Pure/optionalRender';
 // import Father from './Components/container/father';
 // import GreetingStyled from './Components/Pure/greetingStyled';
 // import ContactListComponet from './Components/container/contact_list';
@@ -8,8 +11,8 @@ import './App.css';
 // import Ejemplo4 from './hooks/Ejemplo4';
 // import Greeting from './Components/Pure/greeting';
 // import GreetingF from './Components/Pure/greetingF';
-// import TaskListComponent from './Components/container/task_list';
-import ContactListComponet from './Components/container/contact_list';
+import TaskListComponent from './Components/container/task_list';
+// import ContactListComponet from './Components/container/contact_list';
 
 function App() {
   return (
@@ -36,9 +39,16 @@ function App() {
       {/* </header> */}
       {/* Gestión de enventos */}
       {/* <Father/> */}
+      {/* Ejemplos de Renderizado condicional */}
+      {/* <OptionalRender/> */}
 
-      {/* <TaskListComponent/> */}
-      <ContactListComponet/>
+      {/* Ejemplo de uso de Fomrik y Yup */}
+      {/* <LoginFormik/> */}
+      <RegisterFormik/>
+
+      <TaskListComponent/>
+      {/* <ContactListComponet/> */}
+
 
     </div>
   );
